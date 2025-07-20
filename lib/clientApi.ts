@@ -6,6 +6,7 @@ import type {
   ServerSuccesResponse,
 } from "../types/note";
 import { nextServer } from "./api";
+import { CheckSessionResp } from "@/types/session";
 
 //
 // NOTES
@@ -53,20 +54,21 @@ export const logOut = async () => {
   await nextServer.post<ServerSuccesResponse>(`/auth/logout`);
 };
 
-export const checkSession = async () => {
-  const { data } = await nextServer<User | ServerSuccesResponse>(
-    `/auth/session`
-  );
-  return data;
-};
 //
 //USERS
 //
-export const getMe = async () => {
-  const { data } = await nextServer<User>(`/users/me`);
-  return data;
-};
+
 export const updateMe = async (payload: User) => {
   const { data } = await nextServer.patch<User>(`/users/me`, payload);
   return data;
 };
+
+export async function checkSession() {
+  const res = await nextServer.get<CheckSessionResp>("/auth/session");
+  return res.data;
+}
+
+export async function fetchUser() {
+  const res = await nextServer.get<User>("/users/me");
+  return res.data;
+}

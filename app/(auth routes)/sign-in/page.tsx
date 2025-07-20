@@ -4,16 +4,17 @@ import { useRouter } from "next/navigation";
 import css from "./SignInPage.module.css";
 import { login } from "@/lib/clientApi";
 import { AuthRequest } from "@/types/user";
+import { useAuth } from "@/lib/store/authStore";
 
 export default function Login() {
   const router = useRouter();
-  //   const setUser = useAuth((state) => state.setUser);
+  const setUser = useAuth((state) => state.setUser);
 
   const handleLogin = async (formData: FormData) => {
     const payload = Object.fromEntries(formData) as AuthRequest;
     const res = await login(payload);
     if (res) {
-      //   setUser(res);
+      setUser(res);
       router.push("/profile");
     }
   };
