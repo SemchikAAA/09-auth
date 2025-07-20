@@ -4,6 +4,7 @@ import { useState } from "react";
 import TagsMenu from "../TagsMenu/TagsMenu";
 import css from "./Header.module.css";
 import Link from "next/link";
+import AuthNavigation from "../AuthNavigation/AuthNavigation";
 
 const Header = () => {
   const [tagsMenuIsOpen, setTagsMenuIsOpen] = useState<boolean>(false);
@@ -30,6 +31,8 @@ const Header = () => {
               tagsMenuIsOpen={tagsMenuIsOpen}
             />
           </li>
+
+          <AuthNavigation />
         </ul>
       </nav>
     </header>
