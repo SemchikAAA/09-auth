@@ -1,6 +1,6 @@
-import { fetchNotes } from "@/lib/clientApi";
 import NotesClient from "./Notes.client";
 import { Metadata } from "next";
+import { fetchNotesServer } from "@/lib/serverApi";
 
 type Props = {
   params: Promise<{ slug: string[] }>;
@@ -33,7 +33,7 @@ export default async function Notes({ params }: Props) {
 
   const tagQuery = slug[0] === "all" ? "" : slug[0];
 
-  const notesData = await fetchNotes("", 1, tagQuery);
+  const notesData = await fetchNotesServer("", 1, tagQuery);
 
   return (
     <div>

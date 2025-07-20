@@ -1,11 +1,12 @@
 import { AuthRequest, User } from "@/types/user";
-import type { NewNoteData, Note, ServerSuccesResponse } from "../types/note";
+import type {
+  NewNoteData,
+  Note,
+  NotesResponse,
+  ServerSuccesResponse,
+} from "../types/note";
 import { nextServer } from "./api";
 
-export interface NotesResponse {
-  notes: Note[];
-  totalPages: number;
-}
 //
 // NOTES
 //

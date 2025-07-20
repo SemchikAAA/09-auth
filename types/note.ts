@@ -19,3 +19,7 @@ export interface NewNoteData {
 export interface ServerSuccesResponse {
   succes: boolean;
 }
+export interface NotesResponse {
+  notes: Note[];
+  totalPages: number;
+}
