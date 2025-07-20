@@ -1,4 +1,4 @@
-import { AuthRequest, User } from "@/types/user";
+import { AuthRequest, UpdateUserProps, User } from "@/types/user";
 import type {
   NewNoteData,
   Note,
@@ -8,9 +8,6 @@ import type {
 import { nextServer } from "./api";
 import { CheckSessionResp } from "@/types/session";
 
-//
-// NOTES
-//
 export async function fetchNotes(search: string, page: number, tag?: string) {
   const response = await nextServer<NotesResponse>(`/notes`, {
     params: {
@@ -37,9 +34,7 @@ export async function deleteNote(noteId: number) {
   const response = await nextServer.delete<Note>(`/notes/${noteId}`);
   return response.data;
 }
-//
-// AUTH
-//
+
 export const register = async (payload: AuthRequest) => {
   const { data } = await nextServer.post<User>(`/auth/register`, payload);
   return data;
@@ -54,11 +49,7 @@ export const logOut = async () => {
   await nextServer.post<ServerSuccesResponse>(`/auth/logout`);
 };
 
-//
-//USERS
-//
-
-export const updateMe = async (payload: User) => {
+export const updateUser = async (payload: UpdateUserProps) => {
   const { data } = await nextServer.patch<User>(`/users/me`, payload);
   return data;
 };

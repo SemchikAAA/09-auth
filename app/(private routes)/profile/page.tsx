@@ -1,4 +1,4 @@
-// import Image from "next/image";
+import Image from "next/image";
 import { getMe } from "@/lib/serverApi";
 import css from "./ProfilePage.module.css";
 import Link from "next/link";
@@ -11,18 +11,18 @@ export default async function Profile() {
       <div className={css.profileCard}>
         <div className={css.header}>
           <h1 className={css.formTitle}>Profile Page</h1>
-          <Link href="" className={css.editProfileButton}>
+          <Link href="/profile/edit" className={css.editProfileButton}>
             Edit Profile
           </Link>
         </div>
         <div className={css.avatarWrapper}>
-          {/* <Image
-            src="Avatar"
+          <Image
+            src={user.avatar}
             alt="User Avatar"
             width={120}
             height={120}
             className={css.avatar}
-          /> */}
+          />
         </div>
         <div className={css.profileInfo}>
           <p>Username: {user.username}</p>
