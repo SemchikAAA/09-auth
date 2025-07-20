@@ -1,6 +1,6 @@
 "use client";
 
-import { register } from "@/lib/clientApi";
+import { register } from "@/lib/api/clientApi";
 import css from "./SignUpPage.module.css";
 import { AuthRequest } from "@/types/user";
 import { useRouter } from "next/navigation";

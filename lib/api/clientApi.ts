@@ -4,7 +4,7 @@ import type {
   Note,
   NotesResponse,
   ServerSuccesResponse,
-} from "../types/note";
+} from "../../types/note";
 import { nextServer } from "./api";
 import { CheckSessionResp } from "@/types/session";
 

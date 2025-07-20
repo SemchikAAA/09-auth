@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import css from "./SignInPage.module.css";
-import { login } from "@/lib/clientApi";
+import { login } from "@/lib/api/clientApi";
 import { AuthRequest } from "@/types/user";
 import { useAuth } from "@/lib/store/authStore";
 

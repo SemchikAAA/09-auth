@@ -4,7 +4,7 @@ import Link from "next/link";
 import css from "./AuthNavigation.module.css";
 import { useAuth } from "@/lib/store/authStore";
 import { useRouter } from "next/navigation";
-import { logOut } from "@/lib/clientApi";
+import { logOut } from "@/lib/api/clientApi";
 
 export default function AuthNavigation() {
   const { isAuthenticated, user, clearIsAuthenticated } = useAuth();

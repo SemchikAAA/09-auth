@@ -1,6 +1,6 @@
 import NotesClient from "./Notes.client";
 import { Metadata } from "next";
-import { fetchNotesServer } from "@/lib/serverApi";
+import { fetchNotesServer } from "@/lib/api/serverApi";
 
 type Props = {
   params: Promise<{ slug: string[] }>;
