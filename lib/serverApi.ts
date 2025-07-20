@@ -31,6 +31,9 @@ export const getMe = async () => {
 };
 
 export const checkServerSession = async () => {
-  const { data } = await nextServer<CheckSessionResp>(`/auth/session`);
-  return data;
+  const coockieData = await cookies();
+  const response = await nextServer<CheckSessionResp>(`/auth/session`, {
+    headers: { Cookie: coockieData.toString() },
+  });
+  return response;
 };
