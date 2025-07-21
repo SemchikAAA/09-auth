@@ -12,3 +12,9 @@ export type AuthRequest = {
 export type UpdateUserProps = {
   username: string;
 };
+
+export type AuthUser = {
+  username: string;
+  email: string;
+  avatar?: string;
+};

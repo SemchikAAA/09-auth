@@ -1,10 +1,5 @@
+import { AuthUser } from "@/types/user";
 import { create } from "zustand";
-
-type AuthUser = {
-  username: string;
-  email: string;
-  avatar?: string;
-};
 
 type AuthStore = {
   isAuthenticated: boolean;
