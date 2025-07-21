@@ -9,7 +9,7 @@ import { nextServer } from "./api";
 import { CheckSessionResp } from "@/types/session";
 
 export async function fetchNotes(search: string, page: number, tag?: string) {
-  const response = await nextServer<NotesResponse>(`/notes`, {
+  const response = await nextServer.get<NotesResponse>(`/notes`, {
     params: {
       ...(search && { search }),
       page,
@@ -20,7 +20,7 @@ export async function fetchNotes(search: string, page: number, tag?: string) {
   return response.data;
 }
 
-export async function fetchNoteById(id: number) {
+export async function fetchNoteById(id: string) {
   const response = await nextServer.get<Note>(`/notes/${id}`);
   return response.data;
 }
@@ -30,7 +30,7 @@ export async function createNote(noteData: NewNoteData) {
   return response.data;
 }
 
-export async function deleteNote(noteId: number) {
+export async function deleteNote(noteId: string) {
   const response = await nextServer.delete<Note>(`/notes/${noteId}`);
   return response.data;
 }
@@ -45,7 +45,7 @@ export const login = async (payload: AuthRequest) => {
   return data;
 };
 
-export const logOut = async () => {
+export const logout = async () => {
   await nextServer.post<ServerSuccesResponse>(`/auth/logout`);
 };
 

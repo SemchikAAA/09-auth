@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { nextServer } from "./api";
-import { NotesResponse } from "@/types/note";
+import { Note, NotesResponse } from "@/types/note";
 import { User } from "@/types/user";
 import { CheckSessionResp } from "@/types/session";
 
@@ -32,8 +32,16 @@ export const getMe = async () => {
 
 export const checkServerSession = async () => {
   const coockieData = await cookies();
-  const response = await nextServer<CheckSessionResp>(`/auth/session`, {
+  const response = await nextServer.get<CheckSessionResp>(`/auth/session`, {
     headers: { Cookie: coockieData.toString() },
   });
   return response;
 };
+
+export async function fetchServerNoteById(id: string) {
+  const coockieData = await cookies();
+  const response = await nextServer.get<Note>(`/notes/${id}`, {
+    headers: { Cookie: coockieData.toString() },
+  });
+  return response.data;
+}
